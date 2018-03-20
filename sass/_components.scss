@@ -126,17 +126,78 @@
 // SIDE navigation
 
 .side-nav {
-    &__item {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
 
+    &__item {
+        position: relative;
+
+        // last child will be pseudo class
+        &:not(:last-child) {
+            // margin-bottom: .5rem;
+        }
     }
 
-    &__link {
+    /*
+     COOL - HOVER BACKGROUND 'FILL' EFFECT
+     1. use hidden pseudoclass
+     2. when hover - expand hidden hoverclass over element 
+        - transform for scaleY(0) to scaleY(1)
+        - transform width from 0% to 100%;
+    */
+    // normal state w/o hover - 'hide with scaleY(0)'
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: var(--color-primary);
+        transform: scaleY(0);
+        // where the transform starts (default is middle) 
+        // transform-origin: bottom;
 
+        // 1:time 2: delay
+        transition: transform .2s,
+                    width .4s cubic-bezier(1, 0, 0, 1) .2s,
+                    background-color .1s;
+    }
+
+    // show pseudo element on hover and activelink
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    // click
+    &__item:active::before {
+        background-color: var(--color-primary-light);
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1.5rem 3rem;
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        align-items: center;
     }
 
     &__icon {
         width: 1.75rem;
         height: 1.75rem;
+        margin-right: 2rem;
+        // color of parent element or current element
+        // very useful for hover
+        fill: currentColor;
     }
 }
 
