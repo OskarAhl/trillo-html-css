@@ -333,3 +333,82 @@
         box-shadow: none;
     }
 }
+
+////////////////////////////////
+// Paragraph
+//<p>
+//<p> --> targets this one
+.paragraph:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+////////////////////////////////
+// List
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+    }
+
+    // before each list item we use before to insert < svg
+    &__item::before {
+        content: "";
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        margin-right: .7rem;
+        
+        // older browser - disadvantage: can't change color with color: ... ;
+        // background-image: url(../img/SVG/chevron-thin-right.svg);
+        // background-size: cover;
+
+        // ====  newer browsers =====
+        background-color: var(--color-primary);
+        //  mask is almost like clipping - background of color primary clipped to icon
+        //  can only see background where icon is
+        -webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+        mask-image: url(../img/SVG/chevron-thin-right.svg);
+        mask-size: cover;
+    }
+}
+
+////////////////////////////////
+// Recommend
+
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+    &__count {
+        margin-right: 0 auto;
+    }
+
+    &__friends {
+
+    }
+
+    &__photo {
+        box-sizing: content-box;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #FFF;
+
+        &:not(:last-child) {
+            margin-right: -1.5rem;
+        }
+    }
+}
