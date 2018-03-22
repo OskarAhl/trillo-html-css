@@ -441,14 +441,17 @@
         background-size: cover;
 
         @supports (-webkit-mask-image: url()) or (mask-image: url()) {
-        // ====  newer browsers =====
-        background-color: var(--color-primary);
-        //  mask is almost like clipping - background of color primary clipped to icon
-        //  can only see background where icon is
-        -webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
-        -webkit-mask-size: cover;
-        mask-image: url(../img/SVG/chevron-thin-right.svg);
-        mask-size: cover;
+            // ====  newer browsers =====
+            background-color: var(--color-primary);
+            //  mask is almost like clipping - background of color primary clipped to icon
+            //  can only see background where icon is
+            -webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-image: url(../img/SVG/chevron-thin-right.svg);
+            mask-size: cover;
+
+            // reset background image
+            background-image: none;
         }
     }
 }
