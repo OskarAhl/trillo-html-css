@@ -437,9 +437,10 @@
         margin-right: .7rem;
         
         // older browser - disadvantage: can't change color with color: ... ;
-        // background-image: url(../img/SVG/chevron-thin-right.svg);
-        // background-size: cover;
+        background-image: url(../img/SVG/chevron-thin-right.svg);
+        background-size: cover;
 
+        @supports (-webkit-mask-image: url()) or (mask-image: url()) {
         // ====  newer browsers =====
         background-color: var(--color-primary);
         //  mask is almost like clipping - background of color primary clipped to icon
@@ -448,6 +449,7 @@
         -webkit-mask-size: cover;
         mask-image: url(../img/SVG/chevron-thin-right.svg);
         mask-size: cover;
+        }
     }
 }
 
